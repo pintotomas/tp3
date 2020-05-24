@@ -46,7 +46,7 @@ bool ClientListener::server_is_idle() {
 }
 
 void ClientListener::print_results() {
-    results.print();
+    results();
 }
 
 void ClientListener::garbage_collector() {

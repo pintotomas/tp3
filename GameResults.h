@@ -17,6 +17,7 @@ class GameResults {
   ~GameResults();
   void increment_wins();
   void increment_losses();
+  void operator()();
   void print();
   //Elimino constructor por copia y por movimiento
   GameResults(const GameResults &) = delete;
