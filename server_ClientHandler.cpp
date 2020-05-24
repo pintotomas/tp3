@@ -5,10 +5,12 @@
 #include "ClientHandler.h"
 #include "Protocol.h"
 
-ClientHandler::ClientHandler(Socket socket, ClientCounter* client_counter, GameResults *game_results) {
+ClientHandler::ClientHandler(Socket socket, ClientCounter* client_counter,
+ GameResults *game_results, const int &number) {
     this->peer_socket = std::move(socket);
     this->client_counter = client_counter;
     this->game_results = game_results;
+    std::cout << "This client has to guess the number: " << number <<std::endl;
 }
 
 ClientHandler::~ClientHandler() {

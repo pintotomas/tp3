@@ -1,6 +1,7 @@
 #include "server_Server.h"
 #include <fstream>
 #include <iostream>
+#include <vector>
 #include "helper_functions.h"
 
 #define NUMBERS_LENGTH 3
@@ -8,6 +9,9 @@
 #define SUCCESS 0
 #define ERROR 1
 
+//Devuelve true si el archivo contiene solo lineas
+//cuyo contenido son numeros de 3 digitos sin repetir
+//El archivo stream quedara apuntando al inicio del archivo
 bool valid_file(std::ifstream& stream) {
     if (!stream) {
       std::cerr << "Error: archivo invalido." << std::endl;
@@ -24,7 +28,18 @@ bool valid_file(std::ifstream& stream) {
 			return false;
 		}
 	}
+	stream.clear();
+	stream.seekg(0, std::ios::beg);
     return true;
+}
+
+std::vector<int> parse_numbers(std::ifstream& stream) {
+    std::vector<int> numbers;
+    std::string str; 
+	while (std::getline(stream, str)) {
+		numbers.push_back(stoi(str));
+	}
+    return numbers;
 }
 
 int main(int argc, char *argv[]) {
@@ -37,8 +52,8 @@ int main(int argc, char *argv[]) {
     	return ERROR;
     }
     char *port = argv[1];
-    char *numbers_file2 = argv[2];
-    Server server(port, numbers_file2);
+    std::vector<int> numbers = parse_numbers(numbers_file);
+    Server server(port, numbers);
     server.run();
     return SUCCESS;
 }

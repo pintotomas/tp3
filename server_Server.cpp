@@ -1,9 +1,8 @@
-#include <vector>
 #include <iostream>
 #include "server_Server.h"
 
-Server::Server(char *port, char *numbers_file) :
-    listener(port) {}
+Server::Server(char *port, std::vector<int> &numbers) :
+    listener(port, numbers) {}
 
 void Server::run() {
     this->listener.start();

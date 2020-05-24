@@ -6,11 +6,12 @@
 #include "ClientHandler.h"
 #include <list>
 #include "GameResults.h"
-
+#include "CircleListInteger.h"
+#include <vector>
 
 class ClientListener : public Thread {
 public:
-    explicit ClientListener(char *port);
+    ClientListener(char *port, std::vector<int> &numbers);
 
     ~ClientListener() override;
 
@@ -23,6 +24,7 @@ public:
     void print_results();
 
 private:
+    CircleListInteger number_list;
     GameResults *results;
     Socket server_socket;
     std::list<ClientHandler *> clients;

@@ -2,11 +2,12 @@
 #define SERVER_H
 
 #include <string>
+#include <vector>
 #include "ClientListener.h"
 
 class Server {
 public:
-    Server(char *port, char *numbers_file);
+    Server(char *port, std::vector<int> &numbers_file);
 
     void run();
 

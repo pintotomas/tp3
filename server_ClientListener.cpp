@@ -2,7 +2,8 @@
 #include "ClientListener.h"
 #include "ClientHandler.h"
 
-ClientListener::ClientListener(char *port) {
+ClientListener::ClientListener(char *port, std::vector<int> &numbers) : 
+number_list(numbers) {
     Socket server_socket;
     server_socket.bind_and_listen(port);
     client_counter = new ClientCounter();
@@ -24,7 +25,6 @@ void ClientListener::stop_listening() {
 }
 void ClientListener::run() {
     while (true) {
-        std::cout << "En while true" << std::endl;
         Socket clientSkt;
         try {
             clientSkt = this->server_socket.accept();
@@ -34,7 +34,7 @@ void ClientListener::run() {
         }
         std::cerr << "New Client!\n";
         ClientHandler *client = new ClientHandler(std::move(clientSkt),
-         client_counter, results);
+         client_counter, results, number_list.get_next());
         clients.push_back(client);
         client->start();
         client_counter->add_client();

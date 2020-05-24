@@ -9,7 +9,9 @@
 
 class ClientHandler : public Thread {
 public:
-    ClientHandler(Socket socket, ClientCounter* client_counter, GameResults* game_results);
+    ClientHandler
+    (Socket socket, ClientCounter* client_counter,
+     GameResults* game_results, const int &number);
 
     ~ClientHandler() override;
 
