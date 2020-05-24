@@ -12,7 +12,6 @@ void Server::run() {
         std::cin >> input;
     }
     this->listener.stop_listening();
-    while (!this->listener.server_is_idle()) {
-    	//Espero hasta que se cierren las conexiones
-    }
+    while (!this->listener.server_is_idle()) {}
+    this->listener.print_results();
 }

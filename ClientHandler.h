@@ -4,11 +4,12 @@
 #include "Socket.h"
 #include "Thread.h"
 #include "ClientCounter.h"
+#include "GameResults.h"
 #include <string>
 
 class ClientHandler : public Thread {
 public:
-    ClientHandler(Socket socket, ClientCounter* client_counter);
+    ClientHandler(Socket socket, ClientCounter* client_counter, GameResults* game_results);
 
     ~ClientHandler() override;
 
@@ -20,6 +21,8 @@ private:
     Socket peer_socket;
 
     ClientCounter* client_counter;
+
+    GameResults* game_results;
 
     bool alive = true;
 

@@ -5,7 +5,7 @@ GameResults::GameResults()
 
 GameResults::~GameResults() {}
 
-void GameResults::increments_wins() {
+void GameResults::increment_wins() {
   std::unique_lock<std::mutex> lock(mutex);
   win_count++;
 } 
@@ -16,5 +16,5 @@ void GameResults::increment_losses() {
 }  
 
 void GameResults::print() {
-  std::cout << "\n\t​ Ganadores: " << win_count << "\n\t​Perdedores: " << loss_count << "\n";
+  std::cout << "Estadísticas:\n\t​ Ganadores: " << win_count << "\n\t​Perdedores: " << loss_count << "\n";
 }

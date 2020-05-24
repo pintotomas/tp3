@@ -15,7 +15,7 @@ class GameResults {
  public:
   GameResults();
   ~GameResults();
-  void increments_wins();
+  void increment_wins();
   void increment_losses();
   void print();
   //Elimino constructor por copia y por movimiento

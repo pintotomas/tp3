@@ -7,6 +7,7 @@ ClientListener::ClientListener(char *port) {
     server_socket.bind_and_listen(port);
     client_counter = new ClientCounter();
     this->server_socket = std::move(server_socket);
+    results = new GameResults();
 }
 
 ClientListener::~ClientListener() {
@@ -14,6 +15,7 @@ ClientListener::~ClientListener() {
         delete c;
     }
     delete client_counter;
+    delete results;
     join();
 }
 
@@ -32,17 +34,20 @@ void ClientListener::run() {
         }
         std::cerr << "New Client!\n";
         ClientHandler *client = new ClientHandler(std::move(clientSkt),
-         client_counter);
+         client_counter, results);
         clients.push_back(client);
         client->start();
         client_counter->add_client();
         garbage_collector();
     }
-    std::cout << "Sali de while true" << std::endl;
 }
 
 bool ClientListener::server_is_idle() {
     return client_counter->wait_until_no_more_clients();
+}
+
+void ClientListener::print_results() {
+    results->print();
 }
 
 void ClientListener::garbage_collector() {

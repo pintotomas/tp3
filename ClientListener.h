@@ -5,6 +5,7 @@
 #include "Thread.h"
 #include "ClientHandler.h"
 #include <list>
+#include "GameResults.h"
 
 
 class ClientListener : public Thread {
@@ -19,8 +20,10 @@ public:
     // Atender a mas clientes
     bool server_is_idle();
     void stop_listening();
+    void print_results();
 
 private:
+    GameResults *results;
     Socket server_socket;
     std::list<ClientHandler *> clients;
     ClientCounter* client_counter;

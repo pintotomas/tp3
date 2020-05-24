@@ -5,9 +5,10 @@
 #include "ClientHandler.h"
 #include "Protocol.h"
 
-ClientHandler::ClientHandler(Socket socket, ClientCounter* client_counter) {
+ClientHandler::ClientHandler(Socket socket, ClientCounter* client_counter, GameResults *game_results) {
     this->peer_socket = std::move(socket);
     this->client_counter = client_counter;
+    this->game_results = game_results;
 }
 
 ClientHandler::~ClientHandler() {
@@ -21,6 +22,7 @@ void ClientHandler::run() {
     while (this->alive) {
         std::string request = receive_request();
         if (request.empty()) {
+            game_results->increment_wins();
             this->alive = false;
             break;
         } else { 
