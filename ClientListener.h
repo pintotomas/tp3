@@ -25,7 +25,7 @@ public:
 
 private:
     CircleListInteger number_list;
-    GameResults *results;
+    GameResults results;
     Socket server_socket;
     std::list<ClientHandler *> clients;
     ClientCounter* client_counter;

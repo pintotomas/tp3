@@ -8,7 +8,6 @@ number_list(numbers) {
     server_socket.bind_and_listen(port);
     client_counter = new ClientCounter();
     this->server_socket = std::move(server_socket);
-    results = new GameResults();
 }
 
 ClientListener::~ClientListener() {
@@ -16,7 +15,7 @@ ClientListener::~ClientListener() {
         delete c;
     }
     delete client_counter;
-    delete results;
+    //delete results;
     join();
 }
 
@@ -47,7 +46,7 @@ bool ClientListener::server_is_idle() {
 }
 
 void ClientListener::print_results() {
-    results->print();
+    results.print();
 }
 
 void ClientListener::garbage_collector() {

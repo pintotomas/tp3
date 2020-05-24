@@ -11,7 +11,7 @@ class ClientHandler : public Thread {
 public:
     ClientHandler
     (Socket socket, ClientCounter* client_counter,
-     GameResults* game_results, const int &number);
+     GameResults &game_results, const int &number);
 
     ~ClientHandler() override;
 
@@ -20,11 +20,11 @@ public:
     bool is_alive();
 
 private:
+    GameResults &game_results;
+
     Socket peer_socket;
 
     ClientCounter* client_counter;
-
-    GameResults* game_results;
 
     bool alive = true;
 
