@@ -10,7 +10,7 @@
 class ClientHandler : public Thread {
 public:
     ClientHandler
-    (Socket socket, ClientCounter* client_counter,
+    (Socket socket, ClientCounter &client_counter,
      GameResults &game_results, const int &number);
 
     ~ClientHandler() override;
@@ -22,9 +22,9 @@ public:
 private:
     GameResults &game_results;
 
-    Socket peer_socket;
+    ClientCounter &client_counter;
 
-    ClientCounter* client_counter;
+    Socket peer_socket;
 
     bool alive = true;
 
