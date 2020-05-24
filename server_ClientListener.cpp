@@ -14,10 +14,12 @@ ClientListener::~ClientListener() {
         delete c;
     }
     delete client_counter;
-    this->server_socket.close();
-    this->join();
+    join();
 }
 
+void ClientListener::stop_listening() {
+    server_socket.close();
+}
 void ClientListener::run() {
     while (true) {
         std::cout << "En while true" << std::endl;
@@ -36,6 +38,7 @@ void ClientListener::run() {
         client_counter->add_client();
         garbage_collector();
     }
+    std::cout << "Sali de while true" << std::endl;
 }
 
 bool ClientListener::server_is_idle() {

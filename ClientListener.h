@@ -18,6 +18,7 @@ public:
     // Devuelve True si cuando el server se encuentre sin
     // Atender a mas clientes
     bool server_is_idle();
+    void stop_listening();
 
 private:
     Socket server_socket;

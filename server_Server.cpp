@@ -11,6 +11,7 @@ void Server::run() {
     while (input != "q") {
         std::cin >> input;
     }
+    this->listener.stop_listening();
     while (!this->listener.server_is_idle()) {
     	//Espero hasta que se cierren las conexiones
     }
