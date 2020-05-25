@@ -1,9 +1,9 @@
 #include "ClientProtocol.h"
 #include <iostream>
 
-void ClientProtocol::send(Socket& skt, const unsigned char *message) {
+void ClientProtocol::send(Socket& skt, const unsigned char *message, std::size_t size) {
 
-    skt.send(reinterpret_cast<const void *>(message), 1);
+    skt.send(reinterpret_cast<const void *>(message), size);
 }
 
 unsigned char* ClientProtocol::receive(Socket& skt) {

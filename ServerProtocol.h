@@ -6,6 +6,7 @@
 #include "Command.h"
 #include "HelpCommand.h"
 #include "GiveUpCommand.h"
+#include "NumberCommand.h"
 
 namespace ServerProtocol {
 

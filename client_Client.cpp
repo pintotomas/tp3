@@ -66,7 +66,7 @@ void Client::run() {
 }
 
 void Client::send_request(const unsigned char* request) {
-    ClientProtocol::send(socket, request);
+    ClientProtocol::send(socket, request, 1);
 }
 
 unsigned char* Client::get_response() {

@@ -15,12 +15,15 @@ Command* ServerProtocol::receive(Socket& skt) {
     if (c == 'h') {
         command = new HelpCommand();
     }
-    if (c == 's') {
+    else if (c == 's') {
         command = new GiveUpCommand();
     }
-    //std::cout << c <<std::endl;
-    //message += c;
-//    std::cout << message[0] <<std::endl;
-    //return message;
+    else if (c == 'n') {
+        std::cout << "RECEIVED A NUMBER!!" <<std::endl;
+        uint16_t number;
+        std::cout << "THE NUMBER IS" << number <<std::endl;
+        skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
+        command = new NumberCommand(number);
+    }
     return command;
 }
