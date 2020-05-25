@@ -14,7 +14,7 @@ namespace Protocol {
 
     unsigned char* receive(Socket& skt);
     
-	void server_send(Socket& skt, const unsigned char *message);
+	void server_send(Socket& skt, const unsigned char *message, uint16_t size);
 }
 
 #endif //PROTOCOL_H

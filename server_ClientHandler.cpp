@@ -30,14 +30,10 @@ void ClientHandler::run() {
         this->alive = false;
         //std::cout << request << std::endl
         std::string help_message = "Comandos válidos:​ \n\t​ AYUDA: despliega la lista de comandos válidos​ \n\t​ RENDIRSE: pierde el juego automáticamente​ \n\t​ XXX: Número de 3 cifras a ser enviado al servidor para adivinar el número secreto";
-        std::cout << "HELP_MESSAGE size: " << help_message.length() << std::endl;
-
         const unsigned char* message = reinterpret_cast<const unsigned char *>(help_message.c_str());
-
-
         //std::cout << "ABOUT TO PRINT CASTED" << std::endl;
         //std::cout << casted << std::endl;
-        send_response(message);
+        send_response(message, help_message.length());
         break;
         // if (request.empty()) {
         //     game_results.increment_wins();
@@ -65,10 +61,10 @@ unsigned char* ClientHandler::receive_request() {
 //     return "Hello World (Server)";
 // }
 
-void ClientHandler::send_response(const unsigned char* response) {
+void ClientHandler::send_response(const unsigned char* response, uint16_t size) {
  //   std::cout << "PRINTING RESPONSE " << std::endl;
  //   std::cout << response << std::endl;
-    return Protocol::server_send(this->peer_socket, response);
+    return Protocol::server_send(this->peer_socket, response, size);
 }
 
 bool ClientHandler::is_alive() {

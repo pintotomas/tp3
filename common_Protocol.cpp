@@ -22,9 +22,9 @@ void Protocol::send(Socket& skt, const unsigned char *message) {
     skt.send(reinterpret_cast<const void *>(message), 1);
 }
 
-void Protocol::server_send(Socket& skt, const unsigned char *message) {
+void Protocol::server_send(Socket& skt, const unsigned char *message, uint16_t size) {
 	//primero se envian 2 bytes para indicarle al cliente la longitud del msg
-    skt.send(reinterpret_cast<const void *>(message), 219);
+    skt.send(reinterpret_cast<const void *>(message), size);
 }
 
 unsigned char* Protocol::client_receive(Socket& skt) {

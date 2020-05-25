@@ -32,7 +32,7 @@ private:
     unsigned char* receive_request();
     //std::string process_request(std::string &request);
 
-    void send_response(const unsigned char* response);
+    void send_response(const unsigned char* response, uint16_t size);
 };
 
 
