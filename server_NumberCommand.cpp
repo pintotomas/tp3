@@ -25,7 +25,7 @@ std::string NumberCommand::get_response(GuessNumberGame &game) {
 		else if (res.good > 0) response = std::to_string(res.good) + " bien";
 	}
 	game.decrement_tries();
-	if (game.finished()) response = "Perdiste";
+	if (game.finished() && !game.is_won()) response = "Perdiste";
 	response_size = response.length();
 	return response;
 }
