@@ -27,6 +27,6 @@ Request::~Request() {
 unsigned char* Request::get_request() {
 	return request;
 }
-unsigned int Request::get_size() {
+std::size_t Request::get_size() {
 	return request_size;
 }

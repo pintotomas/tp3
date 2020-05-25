@@ -19,10 +19,10 @@ Command* ServerProtocol::receive(Socket& skt) {
         command = new GiveUpCommand();
     }
     else if (c == 'n') {
-        std::cout << "RECEIVED A NUMBER!!" <<std::endl;
         uint16_t number;
-        std::cout << "THE NUMBER IS" << number <<std::endl;
         skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
+        std::cout << "THE NUMBER IS" << number <<std::endl;
+
         command = new NumberCommand(number);
     }
     return command;

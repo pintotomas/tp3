@@ -11,11 +11,11 @@ class Request {
     Request(std::string req);
     ~Request();
 	unsigned char* get_request();
-	unsigned int get_size();
+	std::size_t get_size();
 
  private:
  	unsigned char* request;
- 	unsigned int request_size;
+ 	std::size_t request_size;
 
  };
 #endif //REQUEST_H
