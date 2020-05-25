@@ -29,18 +29,20 @@ void ClientHandler::run() {
         //std::cout << "Response size:" <<command->response_size << std::endl;
 
         //std::cout << request << std::endl;
-        game_results.increment_wins();
-        this->alive = false;
-        //std::cout << request << std::endl
-        //std::string help_message = "Comandos válidos:​ \n\t​ AYUDA: despliega la lista de comandos válidos​ \n\t​ RENDIRSE: pierde el juego automáticamente​ \n\t​ XXX: Número de 3 cifras a ser enviado al servidor para adivinar el número secreto";
+
+
         std::string message = command->get_response();
+        //if momentaneoi para cortar la ejecucion
+        if ((message.compare("Perdiste") == 0)) {
+            this->alive = false;
+        }
+                
         const unsigned char* response = reinterpret_cast<const unsigned char *>(message.c_str());
         //std::cout << "ABOUT TO PRINT CASTED" << std::endl;
         //std::cout << casted << std::endl;
         uint16_t message_length = command->response_size;
         send_response(response, &message_length);
         delete command;
-        break;
         // if (request.empty()) {
         //     game_results.increment_wins();
         //     this->alive = false;
@@ -51,6 +53,7 @@ void ClientHandler::run() {
         // std::string response = process_request(request);
         // send_response(response);
     }
+    game_results.increment_losses();
     client_counter.remove_client();
     std::cerr << "Client disconnected!\n";
 }

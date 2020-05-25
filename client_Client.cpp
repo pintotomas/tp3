@@ -35,9 +35,9 @@ const unsigned char* Client::create_request(std::string input) {
     }
 
 void Client::run() {
-    std::string greeting = "Hola! Iniciando cliente";
-    std::cout << greeting;
-    while (true) {
+
+    bool keep_playing = true;
+    while (keep_playing) {
         std::string input;
         std::getline(std::cin, input);
         if (!valid_request(input)) {
@@ -49,13 +49,12 @@ void Client::run() {
 
         send_request(request);
         unsigned char* response = get_response();
-        std::cout << response <<std::endl;
-        delete[] response;
-        //if (response.empty()) break;
-        //std::cout << response;
-        if (response) {
-            break;
+        std::string response_str(reinterpret_cast<char*>(response));
+        std::cout << response_str <<std::endl;
+        if ((response_str.compare("Perdiste") == 0) || (response_str.compare("Ganaste") == 0)) {
+            keep_playing = false;
         }
+        delete[] response;
     }
 }
 

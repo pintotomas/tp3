@@ -46,6 +46,9 @@ Command* Protocol::server_receive(Socket& skt) {
     if (c == 'h') {
         command = new HelpCommand();
     }
+    if (c == 's') {
+        command = new GiveUpCommand();
+    }
     //std::cout << c <<std::endl;
     //message += c;
 //    std::cout << message[0] <<std::endl;

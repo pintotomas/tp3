@@ -5,6 +5,7 @@
 #include "Socket.h"
 #include "Command.h"
 #include "HelpCommand.h"
+#include "GiveUpCommand.h"
 
 namespace Protocol {
     //void send(Socket& skt, std::string &message);
