@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Client.h"
 #include <cstddef>
+#include <memory.h>
 
 Client::Client(char *host, char *port) {
     this->socket.connect(host, port);
@@ -19,17 +20,27 @@ bool Client::valid_request(std::string &request) {
     return false;
 }
 
-const unsigned char* Client::create_request(std::string input) {
-    const unsigned char* request;
+unsigned char* Client::create_request(std::string input) {
+    unsigned char* request;
     if ((input.length() == NUMBER_COMMAND_LENGTH) && is_digits(input)) {
-        request = reinterpret_cast<const unsigned char *>("n");
+        request = new unsigned char[3];
+        int myInt(std::stoi(input));
+        uint16_t myInt16 = static_cast<uint16_t>(myInt);
+        std::cout << "myInt16 " << myInt16 <<std::endl;
+        memcpy(&request[0], "n", 1);
+        memcpy(&request[1], &myInt16, 2);
+        //request = reinterpret_cast<const unsigned char *>("n");
         return request;
     }
     if (input.compare(HELP_COMMAND) == 0) {
-        request = reinterpret_cast<const unsigned char *>("h");
+        //request = reinterpret_cast<const unsigned char *>("h");
+        request = new unsigned char[1];
+        memcpy(&request[0], "h", 1);
         return request;
     }
-    request = reinterpret_cast<const unsigned char *>("s");
+    //request = reinterpret_cast<const unsigned char *>("s");
+    request = new unsigned char[1];
+    memcpy(&request[0], "s", 1);
     return request;
     }
 
@@ -47,6 +58,7 @@ void Client::run() {
 
 
         send_request(request);
+        delete[] request; 
         unsigned char* response = get_response();
         std::string response_str(reinterpret_cast<char*>(response));
         std::cout << response_str <<std::endl;

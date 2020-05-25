@@ -29,8 +29,7 @@ private:
 	unsigned char* get_response();
 
     //std::string get_response();
-
-    const unsigned char* create_request(std::string input);
+	unsigned char* create_request(std::string input);
 };
 
 
