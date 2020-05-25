@@ -8,11 +8,9 @@ void ServerProtocol::send(Socket& skt, const unsigned char *message, uint16_t *s
 }
 
 Command* ServerProtocol::receive(Socket& skt) {
-    //unsigned char* message = {0};
     unsigned char c = 0;
     Command * command = nullptr;
     skt.recv(reinterpret_cast<void *>(&c), 1);
-    //if c == n recibir lo restante
     if (c == 'h') {
         command = new HelpCommand();
     }
@@ -22,10 +20,7 @@ Command* ServerProtocol::receive(Socket& skt) {
     else if (c == 'n') {
         uint16_t number;
         skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
-        std::cout << "THE NUMBER IS" << number <<std::endl;
-        uint16_t number_correct = ntohs(number);
-        std::cout << "THE CORRECT NUMBER IS" << number_correct <<std::endl;
-        command = new NumberCommand(number_correct);
+        command = new NumberCommand(ntohs(number));
     }
     return command;
 }
