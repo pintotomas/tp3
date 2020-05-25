@@ -17,21 +17,17 @@ ClientHandler::~ClientHandler() {
 }
 
 void ClientHandler::run() {
-    while (this->alive) {
+    while (!game.finished()) {
         Command *command = receive_request();
         std::string message = command->get_response(game);
-        //if momentaneoi para cortar la ejecucion
-        if ((message.compare("Perdiste") == 0)) {
-            this->alive = false;
-        }
-        std::cout << "Game tries remaining: " << game.tries << std::endl;
         const unsigned char* response =
          reinterpret_cast<const unsigned char *>(message.c_str());
         uint16_t message_length = command->response_size;
         send_response(response, &message_length);
         delete command;
     }
-    game_results.increment_losses();
+    if (game.is_won()) game_results.increment_wins();
+    else game_results.increment_losses();
     client_counter.remove_client();
     std::cerr << "Client disconnected!\n";
 }
