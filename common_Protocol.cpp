@@ -28,11 +28,10 @@ void Protocol::server_send(Socket& skt, const unsigned char *message) {
 }
 
 unsigned char* Protocol::client_receive(Socket& skt) {
-	unsigned char message[219] = {0};
+	unsigned char message[220] = {0};
 	unsigned char* message2 = {0};
 	//unsigned char message_length[2];
     skt.recv(reinterpret_cast<void *>(&message), 219);
-    std::cout << "ADDED \0" << std::endl;
     std::cout << message <<std::endl;
     std::cout << message2 <<std::endl;
 
