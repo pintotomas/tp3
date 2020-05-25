@@ -18,34 +18,57 @@ ClientHandler::~ClientHandler() {
 }
 
 void ClientHandler::run() {
-    std::string message = "Hello World (Server)";
-    send_response(message);
+    //std::string message = "Hello World (Server)";
+    //send_response(message);
     while (this->alive) {
-        std::string request = receive_request();
-        if (request.empty()) {
-            game_results.increment_wins();
-            this->alive = false;
-            break;
-        } else { 
-            std::cout << request << std::endl;
-        }
-        std::string response = process_request(request);
-        send_response(response);
+        //std::string request = receive_request();
+        unsigned char* request = receive_request();
+        if (request) std::cout << "Request no nulo" << std::endl;
+
+        //std::cout << request << std::endl;
+        game_results.increment_wins();
+        this->alive = false;
+        //std::cout << request << std::endl
+        std::string help_message = "Comandos válidos:​ \n\t​ AYUDA: despliega la lista de comandos válidos​ \n\t​ RENDIRSE: pierde el juego automáticamente​ \n\t​ XXX: Número de 3 cifras a ser enviado al servidor para adivinar el número secreto";
+        std::cout << "HELP_MESSAGE size: " << help_message.length() << std::endl;
+
+        const unsigned char* message = reinterpret_cast<const unsigned char *>(help_message.c_str());
+
+
+        //std::cout << "ABOUT TO PRINT CASTED" << std::endl;
+        //std::cout << casted << std::endl;
+        send_response(message);
+        break;
+        // if (request.empty()) {
+        //     game_results.increment_wins();
+        //     this->alive = false;
+        //     break;
+        // } else { 
+        //     std::cout << request << std::endl;
+        // }
+        // std::string response = process_request(request);
+        // send_response(response);
     }
     client_counter.remove_client();
     std::cerr << "Client disconnected!\n";
 }
 
-std::string ClientHandler::receive_request() {
+// std::string ClientHandler::receive_request() {
+//     return Protocol::receive(this->peer_socket);
+// }
+
+unsigned char* ClientHandler::receive_request() {
     return Protocol::receive(this->peer_socket);
 }
 
-std::string ClientHandler::process_request(std::string &request) {
-    return "Hello World (Server)";
-}
+// std::string ClientHandler::process_request(std::string &request) {
+//     return "Hello World (Server)";
+// }
 
-void ClientHandler::send_response(std::string &basicString) {
-    return Protocol::send(this->peer_socket, basicString);
+void ClientHandler::send_response(const unsigned char* response) {
+ //   std::cout << "PRINTING RESPONSE " << std::endl;
+ //   std::cout << response << std::endl;
+    return Protocol::server_send(this->peer_socket, response);
 }
 
 bool ClientHandler::is_alive() {

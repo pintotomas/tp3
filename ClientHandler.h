@@ -28,11 +28,11 @@ private:
 
     bool alive = true;
 
-    std::string receive_request();
+    //std::string receive_request();
+    unsigned char* receive_request();
+    //std::string process_request(std::string &request);
 
-    std::string process_request(std::string &request);
-
-    void send_response(std::string &response_string);
+    void send_response(const unsigned char* response);
 };
 
 

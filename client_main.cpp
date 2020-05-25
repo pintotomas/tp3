@@ -1,10 +1,18 @@
 #include "Client.h"
+#include <iostream>
+
+#define ARGC 3
+#define SUCCESS 0
+#define ERROR 1
 
 int main(int argc, char *argv[]) {
-    if (argc != 3) return 1;
+    if (argc != ARGC) { 
+    	std::cerr << "Error: argumentos invalidos." << std::endl;
+    	return ERROR;
+    }
     char *host = argv[1];
     char *port = argv[2];
     Client client(host, port);
     client.run();
-    return 0;
+    return SUCCESS;
 }

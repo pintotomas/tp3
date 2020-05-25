@@ -5,9 +5,16 @@
 #include "Socket.h"
 
 namespace Protocol {
-    void send(Socket& skt, std::string &message);
+    //void send(Socket& skt, std::string &message);
 
-    std::string receive(Socket& skt);
+   // std::string receive(Socket& skt);
+    void send(Socket& skt, const unsigned char *message);
+
+    unsigned char* client_receive(Socket& skt);
+
+    unsigned char* receive(Socket& skt);
+    
+	void server_send(Socket& skt, const unsigned char *message);
 }
 
 #endif //PROTOCOL_H
