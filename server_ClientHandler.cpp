@@ -33,7 +33,8 @@ void ClientHandler::run() {
         const unsigned char* message = reinterpret_cast<const unsigned char *>(help_message.c_str());
         //std::cout << "ABOUT TO PRINT CASTED" << std::endl;
         //std::cout << casted << std::endl;
-        send_response(message, help_message.length());
+        uint16_t message_length = help_message.length();
+        send_response(message, &message_length);
         break;
         // if (request.empty()) {
         //     game_results.increment_wins();
@@ -61,7 +62,7 @@ unsigned char* ClientHandler::receive_request() {
 //     return "Hello World (Server)";
 // }
 
-void ClientHandler::send_response(const unsigned char* response, uint16_t size) {
+void ClientHandler::send_response(const unsigned char* response, uint16_t* size) {
  //   std::cout << "PRINTING RESPONSE " << std::endl;
  //   std::cout << response << std::endl;
     return Protocol::server_send(this->peer_socket, response, size);

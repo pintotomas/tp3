@@ -22,12 +22,19 @@ void Protocol::send(Socket& skt, const unsigned char *message) {
     skt.send(reinterpret_cast<const void *>(message), 1);
 }
 
-void Protocol::server_send(Socket& skt, const unsigned char *message, uint16_t size) {
+void Protocol::server_send(Socket& skt, const unsigned char *message, uint16_t *size) {
 	//primero se envian 2 bytes para indicarle al cliente la longitud del msg
-    skt.send(reinterpret_cast<const void *>(message), size);
+    std::cout << "SENDING: " << size << "whis is of size: " << sizeof(uint16_t) <<std::endl;
+    skt.send(reinterpret_cast<const void *>(size), 2);
+    //Luego el mensaje
+    std::cout << "SENT 2 BYTES" <<std::endl;
+    skt.send(reinterpret_cast<const void *>(message), *size);
 }
 
 unsigned char* Protocol::client_receive(Socket& skt) {
+    uint16_t message_size;
+    skt.recv(reinterpret_cast<uint16_t*>(&message_size), 2);
+    std::cout << "MESSAGE SIZE " << message_size <<std::endl;
 	unsigned char message[220] = {0};
 	unsigned char* message2 = {0};
 	//unsigned char message_length[2];
