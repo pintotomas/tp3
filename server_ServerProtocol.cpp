@@ -2,7 +2,8 @@
 #include <iostream>
 
 void ServerProtocol::send(Socket& skt, const unsigned char *message, uint16_t *size) {
-    skt.send(reinterpret_cast<const void *>(size), 2);
+    uint16_t size_converted = htons(*size);
+    skt.send(reinterpret_cast<const void *>(&size_converted), 2);
     skt.send(reinterpret_cast<const void *>(message), *size);
 }
 
@@ -22,8 +23,9 @@ Command* ServerProtocol::receive(Socket& skt) {
         uint16_t number;
         skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
         std::cout << "THE NUMBER IS" << number <<std::endl;
-
-        command = new NumberCommand(number);
+        uint16_t number_correct = ntohs(number);
+        std::cout << "THE CORRECT NUMBER IS" << number_correct <<std::endl;
+        command = new NumberCommand(number_correct);
     }
     return command;
 }

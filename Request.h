@@ -5,6 +5,7 @@
 #define NUMBER_COMMAND_LENGTH 3
 #include "helper_functions.h"
 #include <memory.h>
+#include <arpa/inet.h>
 
 class Request {
  public:

@@ -7,7 +7,7 @@ Request::Request(std::string req) {
     	request_size = 3;
         request = new unsigned char[3];
         int myInt(std::stoi(req));
-        uint16_t myInt16 = static_cast<uint16_t>(myInt);
+        uint16_t myInt16 = htons(static_cast<uint16_t>(myInt));
         memcpy(&request[0], "n", 1);
         memcpy(&request[1], &myInt16, 2);
     }
