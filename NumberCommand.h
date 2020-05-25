@@ -4,11 +4,11 @@
 #include <string>
 class NumberCommand: public Command {
   public:
-    explicit NumberCommand(int number);
+    explicit NumberCommand(uint16_t number);
     ~NumberCommand();
-    virtual std::string get_response();
+    virtual std::string get_response(GuessNumberGame &game);
   private:
-  	int number;
+  	uint16_t number;
 };
 
 #endif //NUMBERCOMMAND_H

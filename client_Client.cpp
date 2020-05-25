@@ -17,10 +17,6 @@ bool Client::valid_request(std::string &request) {
         return true;
     } else if (request.compare(GIVEUP_COMMAND) == 0) {
         return true;
-    // } else if ((request.length() == NUMBER_COMMAND_LENGTH)
-    //  && is_digits(request)) {
-    //     return true;
-    // }
     } else if (is_digits(request)) {
         if (str_to_uint16(request.c_str()))
             return true;

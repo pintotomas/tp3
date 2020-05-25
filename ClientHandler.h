@@ -8,6 +8,8 @@
 #include <string>
 #include "Command.h"
 #include "ServerProtocol.h"
+#include "GuessNumberGame.h"
+
 
 class ClientHandler : public Thread {
 public:
@@ -25,6 +27,8 @@ private:
     GameResults &game_results;
 
     ClientCounter &client_counter;
+
+    GuessNumberGame game;
 
     Socket peer_socket;
 

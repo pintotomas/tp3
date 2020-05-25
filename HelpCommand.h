@@ -6,7 +6,7 @@ class HelpCommand: public Command {
   public:
     HelpCommand();
     ~HelpCommand();
-    virtual std::string get_response();
+    virtual std::string get_response(GuessNumberGame &game);
 };
 
 #endif //HELPCOMMAND_H
