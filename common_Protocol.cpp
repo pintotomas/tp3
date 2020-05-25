@@ -30,24 +30,25 @@ void Protocol::server_send(Socket& skt, const unsigned char *message, uint16_t *
 unsigned char* Protocol::client_receive(Socket& skt) {
     uint16_t message_size;
     skt.recv(reinterpret_cast<uint16_t*>(&message_size), 2);
-    std::cout << "MESSAGE SIZE " << message_size <<std::endl;
 	unsigned char *message = new unsigned char[message_size + 1];
-	unsigned char* message2 = {0};
 	//unsigned char message_length[2];
     skt.recv(reinterpret_cast<void *>(message), message_size);
     message[message_size] = '\0';
-    std::cout << message <<std::endl;
-    std::cout << message2 <<std::endl;
-    delete[] message;
-    return message2;
+    return message;
 }
 
-unsigned char* Protocol::receive(Socket& skt) {
-    unsigned char* message = {0};
+Command* Protocol::server_receive(Socket& skt) {
+    //unsigned char* message = {0};
     unsigned char c = 0;
+    Command * command = nullptr;
     skt.recv(reinterpret_cast<void *>(&c), 1);
-    std::cout << c <<std::endl;
-    message += c;
+    //if c == n recibir lo restante
+    if (c == 'h') {
+        command = new HelpCommand();
+    }
+    //std::cout << c <<std::endl;
+    //message += c;
 //    std::cout << message[0] <<std::endl;
-    return message;
+    //return message;
+    return command;
 }

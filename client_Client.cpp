@@ -45,9 +45,12 @@ void Client::run() {
             continue;
         }
         const unsigned char* request = create_request(input);
-//        if (request.empty()) break;
+
+
         send_request(request);
         unsigned char* response = get_response();
+        std::cout << response <<std::endl;
+        delete[] response;
         //if (response.empty()) break;
         //std::cout << response;
         if (response) {

@@ -6,6 +6,7 @@
 #include "ClientCounter.h"
 #include "GameResults.h"
 #include <string>
+#include "Command.h"
 
 class ClientHandler : public Thread {
 public:
@@ -29,7 +30,7 @@ private:
     bool alive = true;
 
     //std::string receive_request();
-    unsigned char* receive_request();
+    Command* receive_request();
     //std::string process_request(std::string &request);
 
     void send_response(const unsigned char* response, uint16_t *size);

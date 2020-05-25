@@ -22,19 +22,24 @@ void ClientHandler::run() {
     //send_response(message);
     while (this->alive) {
         //std::string request = receive_request();
-        unsigned char* request = receive_request();
-        if (request) std::cout << "Request no nulo" << std::endl;
+        //unsigned char* request = receive_request();
+        //if (request) std::cout << "Request no nulo" << std::endl;
+        Command *command = receive_request();
+        //std::cout << command->get_response() << std::endl;
+        //std::cout << "Response size:" <<command->response_size << std::endl;
 
         //std::cout << request << std::endl;
         game_results.increment_wins();
         this->alive = false;
         //std::cout << request << std::endl
-        std::string help_message = "Comandos válidos:​ \n\t​ AYUDA: despliega la lista de comandos válidos​ \n\t​ RENDIRSE: pierde el juego automáticamente​ \n\t​ XXX: Número de 3 cifras a ser enviado al servidor para adivinar el número secreto";
-        const unsigned char* message = reinterpret_cast<const unsigned char *>(help_message.c_str());
+        //std::string help_message = "Comandos válidos:​ \n\t​ AYUDA: despliega la lista de comandos válidos​ \n\t​ RENDIRSE: pierde el juego automáticamente​ \n\t​ XXX: Número de 3 cifras a ser enviado al servidor para adivinar el número secreto";
+        std::string message = command->get_response();
+        const unsigned char* response = reinterpret_cast<const unsigned char *>(message.c_str());
         //std::cout << "ABOUT TO PRINT CASTED" << std::endl;
         //std::cout << casted << std::endl;
-        uint16_t message_length = help_message.length();
-        send_response(message, &message_length);
+        uint16_t message_length = command->response_size;
+        send_response(response, &message_length);
+        delete command;
         break;
         // if (request.empty()) {
         //     game_results.increment_wins();
@@ -54,8 +59,9 @@ void ClientHandler::run() {
 //     return Protocol::receive(this->peer_socket);
 // }
 
-unsigned char* ClientHandler::receive_request() {
-    return Protocol::receive(this->peer_socket);
+//unsigned char* ClientHandler::receive_request() {
+Command* ClientHandler::receive_request() {
+    return Protocol::server_receive(this->peer_socket);
 }
 
 // std::string ClientHandler::process_request(std::string &request) {

@@ -5,7 +5,7 @@
 
 class CircleListInteger {
 public:
-    CircleListInteger(std::vector<int> &numbers);
+    explicit CircleListInteger(std::vector<int> &numbers);
 
     const int get_next();
 
