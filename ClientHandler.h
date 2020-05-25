@@ -7,6 +7,7 @@
 #include "GameResults.h"
 #include <string>
 #include "Command.h"
+#include "ServerProtocol.h"
 
 class ClientHandler : public Thread {
 public:

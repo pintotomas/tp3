@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Client.h"
-#include "Protocol.h"
 #include <cstddef>
 
 Client::Client(char *host, char *port) {
@@ -63,12 +62,12 @@ void Client::run() {
 // }
 
 void Client::send_request(const unsigned char* request) {
-    Protocol::send(socket, request);
+    ClientProtocol::send(socket, request);
 }
 
 // std::string Client::get_response() {
 //     return Protocol::receive(socket);
 // }
 unsigned char* Client::get_response() {
-    return Protocol::client_receive(socket);
+    return ClientProtocol::receive(socket);
 }

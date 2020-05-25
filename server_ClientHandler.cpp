@@ -3,7 +3,7 @@
 #include <iostream>
 #include "ClientCounter.h"
 #include "ClientHandler.h"
-#include "Protocol.h"
+#include "ServerProtocol.h"
 
 ClientHandler::ClientHandler(Socket socket, ClientCounter &client_counter,
  GameResults &game_results, const int &number) : game_results(game_results), 
@@ -64,7 +64,7 @@ void ClientHandler::run() {
 
 //unsigned char* ClientHandler::receive_request() {
 Command* ClientHandler::receive_request() {
-    return Protocol::server_receive(this->peer_socket);
+    return ServerProtocol::receive(this->peer_socket);
 }
 
 // std::string ClientHandler::process_request(std::string &request) {
@@ -74,7 +74,7 @@ Command* ClientHandler::receive_request() {
 void ClientHandler::send_response(const unsigned char* response, uint16_t* size) {
  //   std::cout << "PRINTING RESPONSE " << std::endl;
  //   std::cout << response << std::endl;
-    return Protocol::server_send(this->peer_socket, response, size);
+    return ServerProtocol::send(this->peer_socket, response, size);
 }
 
 bool ClientHandler::is_alive() {

@@ -4,6 +4,7 @@
 #include "helper_functions.h"
 #include <string>
 #include "Socket.h"
+#include "ClientProtocol.h"
 
 #define HELP_COMMAND "AYUDA"
 #define GIVEUP_COMMAND "RENDIRSE"
