@@ -26,19 +26,15 @@ unsigned char* Client::create_request(std::string input) {
         request = new unsigned char[3];
         int myInt(std::stoi(input));
         uint16_t myInt16 = static_cast<uint16_t>(myInt);
-        std::cout << "myInt16 " << myInt16 <<std::endl;
         memcpy(&request[0], "n", 1);
         memcpy(&request[1], &myInt16, 2);
-        //request = reinterpret_cast<const unsigned char *>("n");
         return request;
     }
     if (input.compare(HELP_COMMAND) == 0) {
-        //request = reinterpret_cast<const unsigned char *>("h");
         request = new unsigned char[1];
         memcpy(&request[0], "h", 1);
         return request;
     }
-    //request = reinterpret_cast<const unsigned char *>("s");
     request = new unsigned char[1];
     memcpy(&request[0], "s", 1);
     return request;
@@ -69,17 +65,10 @@ void Client::run() {
     }
 }
 
-// void Client::send_request(std::string &request) {
-//     Protocol::send(socket, request);
-// }
-
 void Client::send_request(const unsigned char* request) {
     ClientProtocol::send(socket, request);
 }
 
-// std::string Client::get_response() {
-//     return Protocol::receive(socket);
-// }
 unsigned char* Client::get_response() {
     return ClientProtocol::receive(socket);
 }

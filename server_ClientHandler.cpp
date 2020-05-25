@@ -3,7 +3,7 @@
 #include <iostream>
 #include "ClientCounter.h"
 #include "ClientHandler.h"
-#include "ServerProtocol.h"
+
 
 ClientHandler::ClientHandler(Socket socket, ClientCounter &client_counter,
  GameResults &game_results, const int &number) : game_results(game_results), 
