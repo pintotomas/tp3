@@ -6,10 +6,11 @@
 #include "helper_functions.h"
 #include <memory.h>
 #include <arpa/inet.h>
+#include <string>
 
 class Request {
  public:
-    Request(std::string req);
+    explicit Request(std::string req);
     ~Request();
 	unsigned char* get_request();
 	std::size_t get_size();
@@ -17,6 +18,5 @@ class Request {
  private:
  	unsigned char* request;
  	std::size_t request_size;
-
  };
 #endif //REQUEST_H

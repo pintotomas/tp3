@@ -8,6 +8,5 @@ class Command {
     virtual ~Command();
 	//Dada la instancia del juego y el tipo de comando, genera una respuesta
 	virtual std::string get_response() = 0;
-
  };
 #endif

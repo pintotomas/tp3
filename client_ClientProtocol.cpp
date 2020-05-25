@@ -1,8 +1,8 @@
 #include "ClientProtocol.h"
 #include <iostream>
 
-void ClientProtocol::send(Socket& skt, const unsigned char *message, std::size_t size) {
-
+void ClientProtocol::send
+(Socket& skt, const unsigned char *message, std::size_t size) {
     skt.send(reinterpret_cast<const void *>(message), size);
 }
 

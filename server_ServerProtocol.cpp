@@ -1,7 +1,8 @@
 #include "ServerProtocol.h"
 #include <iostream>
 
-void ServerProtocol::send(Socket& skt, const unsigned char *message, uint16_t *size) {
+void ServerProtocol::send
+(Socket& skt, const unsigned char *message, uint16_t *size) {
     uint16_t size_converted = htons(*size);
     skt.send(reinterpret_cast<const void *>(&size_converted), 2);
     skt.send(reinterpret_cast<const void *>(message), *size);
@@ -13,11 +14,9 @@ Command* ServerProtocol::receive(Socket& skt) {
     skt.recv(reinterpret_cast<void *>(&c), 1);
     if (c == 'h') {
         command = new HelpCommand();
-    }
-    else if (c == 's') {
+    } else if (c == 's') {
         command = new GiveUpCommand();
-    }
-    else if (c == 'n') {
+    } else if (c == 'n') {
         uint16_t number;
         skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
         command = new NumberCommand(ntohs(number));

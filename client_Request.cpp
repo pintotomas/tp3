@@ -10,12 +10,10 @@ Request::Request(std::string req) {
         uint16_t myInt16 = htons(static_cast<uint16_t>(myInt));
         memcpy(&request[0], "n", 1);
         memcpy(&request[1], &myInt16, 2);
-    }
-    else if (req.compare(HELP_COMMAND) == 0) {
+    } else if (req.compare(HELP_COMMAND) == 0) {
         request = new unsigned char[1];
         memcpy(&request[0], "h", 1);
-    }
-    else if (req.compare(GIVEUP_COMMAND) == 0) {
+    } else if (req.compare(GIVEUP_COMMAND) == 0) {
     	request = new unsigned char[1];
     	memcpy(&request[0], "s", 1);
 	}
