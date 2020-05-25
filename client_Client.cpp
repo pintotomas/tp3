@@ -2,7 +2,6 @@
 #include "Client.h"
 #include <cstddef>
 #include "Request.h"
-
 //#include <memory.h>
 
 Client::Client(char *host, char *port) {
@@ -10,27 +9,39 @@ Client::Client(char *host, char *port) {
 }
 
 bool Client::valid_request(std::string &request) {
+    const std::string invalid_command_error =
+     "Error: comando inválido. Escriba AYUDA para obtener ayuda";
+    const std::string invalid_number_error = 
+    "Número inválido. Debe ser de 3 cifras no repetidas";
     if (request.compare(HELP_COMMAND) == 0) {
         return true;
     } else if (request.compare(GIVEUP_COMMAND) == 0) {
         return true;
-    } else if ((request.length() == NUMBER_COMMAND_LENGTH)
-     && is_digits(request)) {
-        return true;
+    // } else if ((request.length() == NUMBER_COMMAND_LENGTH)
+    //  && is_digits(request)) {
+    //     return true;
+    // }
+    } else if (is_digits(request)) {
+        if (str_to_uint16(request.c_str()))
+            return true;
+        else {
+            //ESTO DEBERIA HACERLO EL SERVIDOR
+            std::cout << invalid_command_error << std::endl;
+            return false;
+        }
     }
+    std::cout << invalid_command_error << std::endl;
     return false;
 }
 
 void Client::run() {
     bool keep_playing = true;
-    const std::string invalid_command_error =
-     "Error: comando inválido. Escriba AYUDA para obtener ayuda";
+
     while (keep_playing) {
         std::string input;
         std::getline(std::cin, input);
 
         if (!valid_request(input)) {
-            std::cout << invalid_command_error << std::endl;
             continue;
         }
         Request request(input);

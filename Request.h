@@ -2,7 +2,6 @@
 #define REQUEST_H
 #define HELP_COMMAND "AYUDA"
 #define GIVEUP_COMMAND "RENDIRSE"
-#define NUMBER_COMMAND_LENGTH 3
 #include "helper_functions.h"
 #include <memory.h>
 #include <arpa/inet.h>

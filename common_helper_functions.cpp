@@ -16,3 +16,14 @@ bool is_digits(const std::string &str)
 {
     return std::all_of(str.begin(), str.end(), ::isdigit);
 }
+
+//returns true if str can be represented in uint16
+bool str_to_uint16(const char *str)
+{
+  char *end;
+  errno = 0;
+  intmax_t val = strtoimax(str, &end, 10);
+  if (errno == ERANGE || val < 0 || val > UINT16_MAX || end == str || *end != '\0')
+    return false;
+  return true;
+}

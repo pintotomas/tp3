@@ -3,7 +3,7 @@
 Request::Request(std::string req) {
 	request = nullptr;
 	request_size = 1;
-    if ((req.length() == NUMBER_COMMAND_LENGTH) && is_digits(req)) {
+    if (is_digits(req)) {
     	request_size = 3;
         request = new unsigned char[3];
         int myInt(std::stoi(req));
