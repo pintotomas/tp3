@@ -15,14 +15,6 @@ std::string NumberCommand::get_response(GuessNumberGame &game) {
 	} else {
 		AttemptResult res = game.try_to_guess(number);
 		response = parse_game_attempt(res);
-/*		if (res.wrong == 3) { response = "3 mal";
-		} else if (res.good == 3) { response = "Ganaste";
-		} else if (res.good > 0 && res.regular > 0) {
-			response = std::to_string(res.good) + " bien," +
-			 std::to_string(res.regular) + " regular";
-		} else if (res.regular > 0) { 
-			response = std::to_string(res.regular) + " regular";
-		} else if (res.good > 0) { response = std::to_string(res.good) + " bien"; }*/
 	}
 	game.decrement_tries();
 	if (game.finished() && !game.is_won()) response = "Perdiste";
@@ -35,7 +27,7 @@ std::string NumberCommand::parse_game_attempt(AttemptResult &res) {
 	if (res.wrong == 3) { response = "3 mal";
 	} else if (res.good == 3) { response = "Ganaste";
 	} else if (res.good > 0 && res.regular > 0) {
-		response = std::to_string(res.good) + " bien," +
+		response = std::to_string(res.good) + " bien, " +
 		std::to_string(res.regular) + " regular";
 	} else if (res.regular > 0) { 
 		response = std::to_string(res.regular) + " regular";
