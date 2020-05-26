@@ -20,7 +20,7 @@ const AttemptResult GuessNumberGame::try_to_guess(const uint16_t n) {
 	return result;
 }
 
-const bool GuessNumberGame::is_won() {
+const bool GuessNumberGame::is_won() const {
 	return won;
 }
 
@@ -33,7 +33,7 @@ void GuessNumberGame::decrement_tries() {
 	tries--;
 }
 
-const bool GuessNumberGame::finished() {
+const bool GuessNumberGame::finished() const {
 	if (tries == 0 || won) return true;
 	return false;
 }
