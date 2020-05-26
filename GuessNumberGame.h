@@ -10,7 +10,7 @@ struct AttemptResult {
 
 class GuessNumberGame {
   public:
-    GuessNumberGame(uint16_t number);
+    explicit GuessNumberGame(uint16_t number);
     ~GuessNumberGame();
     /* Devuelve un struct que indica la cantidad de digitos
     mal, regulares y bien en el numero que intento adivinar el jugaudor.
@@ -24,7 +24,6 @@ class GuessNumberGame {
     unsigned int tries = 10;
     bool won = false;
   	uint16_t number;
-  
 };
 
 #endif //GUESSNUMBERGAME_H

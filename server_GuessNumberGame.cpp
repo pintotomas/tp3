@@ -10,8 +10,8 @@ AttemptResult GuessNumberGame::try_to_guess(uint16_t n) {
 	for(std::string::size_type i = 0; i < number_to_guess.size(); ++i) {
 		for(std::string::size_type j = 0; j < user_try.size(); ++j) {
 			if (number_to_guess[i] == user_try[j]) {
-				if (i == j) result.good++;
-				else result.regular++;
+				if (i == j) { result.good++;
+				} else { result.regular++; }
 			}
 		}
 	}

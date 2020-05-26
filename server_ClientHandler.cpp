@@ -25,8 +25,8 @@ void ClientHandler::run() {
         send_response(response, &message_length);
         delete command;
     }
-    if (game.is_won()) game_results.increment_wins();
-    else game_results.increment_losses();
+    if (game.is_won()) { game_results.increment_wins();
+    } else { game_results.increment_losses(); }
     client_counter.remove_client();
 }
 Command* ClientHandler::receive_request() {
