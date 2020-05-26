@@ -17,6 +17,6 @@ void GameResults::increment_losses() {
 
 void GameResults::operator()() {
   std::cout << 
-  "Estadísticas:\n\t​Ganadores:  " << win_count << "\n\t​Perdedores: "
+  "Estadísticas:\n\tGanadores:  " << win_count << "\n\tPerdedores: "
    << loss_count << "\n";
 }
