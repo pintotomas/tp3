@@ -25,9 +25,9 @@ public:
 
     Socket accept();
 
-    void send(const void *msg, const size_t length);
+    void send(const void *msg, const size_t length) const;
 
-    void recv(void *response, const size_t length);
+    void recv(void *response, const size_t length) const;
 
     void close();
 
@@ -38,7 +38,7 @@ public:
 private:
     int fd = -1;
 
-    struct addrinfo *getAddr(const char *host, const char *service, int flags);
+    struct addrinfo *getAddr(const char *host, const char *service, int flags) const;
 };
 
 #endif //SOCKET_H

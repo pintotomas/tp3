@@ -53,7 +53,7 @@ void Socket::close() {
     ::close(this->fd);
 }
 
-void Socket::send(const void *msg, const size_t length) {
+void Socket::send(const void *msg, const size_t length) const {
     if (length == 0) return;
     uint remaining_bytes = length;
     uint total_bytes_sent = 0;
@@ -67,7 +67,7 @@ void Socket::send(const void *msg, const size_t length) {
     } while (total_bytes_sent < length && bytes > 0);
 }
 
-void Socket::recv(void *response, const size_t length) {
+void Socket::recv(void *response, const size_t length) const {
     if (length == 0) return;
     uint remaining_bytes = length;
     uint total_bytes_received = 0;
@@ -82,7 +82,7 @@ void Socket::recv(void *response, const size_t length) {
 }
 
 struct addrinfo *Socket::getAddr(const char *host, const char *service,
-                                 int flags) {
+                                 int flags) const {
     struct addrinfo *addrinfo_list;
     struct addrinfo hints;
     memset(&hints, 0, sizeof(struct addrinfo));
