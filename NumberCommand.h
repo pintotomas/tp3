@@ -5,12 +5,12 @@
 #include "helper_functions.h"
 class NumberCommand: public Command {
   public:
-    explicit NumberCommand(uint16_t number);
+    explicit NumberCommand(const uint16_t number);
     ~NumberCommand();
-    virtual std::string get_response(GuessNumberGame &game);
+    virtual const std::string get_response(GuessNumberGame &game);
   private:
-  	uint16_t number;
-	std::string parse_game_attempt(AttemptResult &res);
+  	const uint16_t number;
+	const std::string parse_game_attempt(const AttemptResult &res) const;
 };
 
 #endif //NUMBERCOMMAND_H

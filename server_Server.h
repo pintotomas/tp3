@@ -7,7 +7,7 @@
 
 class Server {
 public:
-    Server(char *port, std::vector<int> &numbers_file);
+    Server(const char *port, std::vector<int> &numbers_file);
 
     void run();
 

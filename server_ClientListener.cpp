@@ -2,7 +2,7 @@
 #include "ClientListener.h"
 #include "ClientHandler.h"
 
-ClientListener::ClientListener(char *port, std::vector<int> &numbers) : 
+ClientListener::ClientListener(const char *port, std::vector<int> &numbers) : 
 number_list(numbers) {
     Socket server_socket;
     server_socket.bind_and_listen(port);

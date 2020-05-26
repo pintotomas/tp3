@@ -2,11 +2,11 @@
 #include <iostream>
 #include <string>
 
-NumberCommand::NumberCommand(uint16_t number) : number(number) {}
+NumberCommand::NumberCommand(const uint16_t number) : number(number) {}
 
 NumberCommand::~NumberCommand() {}
 
-std::string NumberCommand::get_response(GuessNumberGame &game) {
+const std::string NumberCommand::get_response(GuessNumberGame &game) {
 	std::string response;
 	if (number > 999 || number < 100 ||
 	 !contains_unique_numbers(std::to_string(number))) {
@@ -22,7 +22,8 @@ std::string NumberCommand::get_response(GuessNumberGame &game) {
 	return response;
 }
 
-std::string NumberCommand::parse_game_attempt(AttemptResult &res) {
+const std::string NumberCommand::parse_game_attempt
+(const AttemptResult &res) const {
 	std::string response;
 	if (res.wrong == 3) { response = "3 mal";
 	} else if (res.good == 3) { response = "Ganaste";

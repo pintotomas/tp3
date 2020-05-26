@@ -11,7 +11,7 @@
 
 class ClientListener : public Thread {
 public:
-    ClientListener(char *port, std::vector<int> &numbers);
+    ClientListener(const char *port, std::vector<int> &numbers);
 
     ~ClientListener() override;
 

@@ -8,6 +8,6 @@ class Command {
     int response_size;
     virtual ~Command();
 	//Dada la instancia del juego y el tipo de comando, genera una respuesta
-	virtual std::string get_response(GuessNumberGame &game) = 0;
+	virtual const std::string get_response(GuessNumberGame &game) = 0;
  };
 #endif

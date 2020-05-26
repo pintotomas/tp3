@@ -6,7 +6,7 @@ class GiveUpCommand: public Command {
   public:
     GiveUpCommand();
     ~GiveUpCommand();
-    virtual std::string get_response(GuessNumberGame &game);
+    virtual const std::string get_response(GuessNumberGame &game);
 };
 
 #endif //GIVEUPCOMMAND_H

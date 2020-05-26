@@ -9,13 +9,13 @@
 
 class Request {
  public:
-    explicit Request(std::string req);
+    explicit Request(const std::string req);
     ~Request();
-	unsigned char* get_request();
-	std::size_t get_size();
+	const unsigned char* get_request() const;
+	const std::size_t get_size() const;
 
  private:
- 	unsigned char* request;
+    unsigned char* request;
  	std::size_t request_size;
  };
 #endif //REQUEST_H

@@ -1,6 +1,6 @@
 #include "Request.h"
 
-Request::Request(std::string req) {
+Request::Request(const std::string req) {
 	request = nullptr;
 	request_size = 1;
     if (is_digits(req)) {
@@ -22,9 +22,9 @@ Request::Request(std::string req) {
 Request::~Request() {
 	delete[] request;
 }
-unsigned char* Request::get_request() {
+const unsigned char* Request::get_request() const {
 	return request;
 }
-std::size_t Request::get_size() {
+const std::size_t Request::get_size() const {
 	return request_size;
 }
