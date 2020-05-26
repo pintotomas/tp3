@@ -21,7 +21,7 @@ public:
 
     void run() override;
 
-    bool is_alive();
+    const bool is_alive();
 
 private:
     GameResults &game_results;

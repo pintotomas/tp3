@@ -38,6 +38,6 @@ void ClientHandler::send_response
     return ServerProtocol::send(this->peer_socket, response, size);
 }
 
-bool ClientHandler::is_alive() {
+const bool ClientHandler::is_alive() {
     return this->alive;
 }

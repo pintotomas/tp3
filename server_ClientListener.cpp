@@ -37,7 +37,7 @@ void ClientListener::run() {
     }
 }
 
-bool ClientListener::server_is_idle() {
+const bool ClientListener::server_is_idle() {
     return client_counter.wait_until_no_more_clients();
 }
 
