@@ -5,12 +5,12 @@
 
 class CircleListInteger {
 public:
-    explicit CircleListInteger(std::vector<int> &numbers);
+    explicit CircleListInteger(const std::vector<int> &numbers);
 
     const int get_next();
 
 private:
-    std::vector<int> numbers;
+    const std::vector<int> numbers;
     unsigned int current_position = 0;
 };
 

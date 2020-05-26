@@ -1,7 +1,7 @@
 #include "CircleListInteger.h"
 
 CircleListInteger::CircleListInteger
-(std::vector<int> &numbers) : numbers(numbers) {}
+(const std::vector<int> &numbers) : numbers(numbers) {}
 
 const int CircleListInteger::get_next() {
 	int current_number = numbers.at(current_position);
