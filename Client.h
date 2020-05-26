@@ -8,14 +8,14 @@
 
 class Client {
 public:
-    Client(char *host, char *port);
+    Client(const char *host, const char *port);
 
     void run();
 
 private:
     Socket socket;
 
-    bool valid_request(std::string &request);
+    const bool valid_request(std::string &request);
 
     void send_request(const unsigned char* request, std::size_t size);
 

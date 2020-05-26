@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
     	std::cerr << "Error: argumentos invalidos." << std::endl;
     	return SUCCESS;
     }
-    char *host = argv[1];
-    char *port = argv[2];
+    const char *host = argv[1];
+    const char *port = argv[2];
     Client client(host, port);
     client.run();
     return SUCCESS;

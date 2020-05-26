@@ -34,7 +34,7 @@ Command* ClientHandler::receive_request() {
 }
 
 void ClientHandler::send_response
-(const unsigned char* response, uint16_t* size) {
+(const unsigned char* response, const uint16_t* size) {
     return ServerProtocol::send(this->peer_socket, response, size);
 }
 

@@ -4,11 +4,11 @@
 #include "Request.h"
 //#include <memory.h>
 
-Client::Client(char *host, char *port) {
+Client::Client(const char *host, const char *port) {
     this->socket.connect(host, port);
 }
 
-bool Client::valid_request(std::string &request) {
+const bool Client::valid_request(std::string &request) {
     const std::string invalid_command_error =
      "Error: comando inválido. Escriba AYUDA para obtener ayuda";
     const std::string invalid_number_error = 

@@ -36,7 +36,7 @@ private:
 
     Command* receive_request();
 
-    void send_response(const unsigned char* response, uint16_t *size);
+    void send_response(const unsigned char* response, const uint16_t *size);
 };
 
 
