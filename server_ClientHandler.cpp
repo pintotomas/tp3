@@ -1,17 +1,21 @@
 #include <vector>
 #include <sstream>
 #include <iostream>
-#include "ClientCounter.h"
+//#include "ClientCounter.h"
 #include "ClientHandler.h"
 
-ClientHandler::ClientHandler(Socket socket, ClientCounter &client_counter,
+/*ClientHandler::ClientHandler(Socket socket, ClientCounter &client_counter,
  GameResults &game_results, const int &number) : game_results(game_results), 
  client_counter(client_counter), game(number) {
     this->peer_socket = std::move(socket);
 }
+*/
+ClientHandler::ClientHandler(Socket socket,GameResults &game_results,
+ const int &number) : game_results(game_results), game(number) {
+    this->peer_socket = std::move(socket);
+}
 
 ClientHandler::~ClientHandler() {
-    this->peer_socket.close();
     this->join();
 }
 
@@ -27,7 +31,9 @@ void ClientHandler::run() {
     }
     if (game.is_won()) { game_results.increment_wins();
     } else { game_results.increment_losses(); }
-    client_counter.remove_client();
+    //client_counter.remove_client();
+    alive = false;
+    this->peer_socket.close();
 }
 Command* ClientHandler::receive_request() {
     return ServerProtocol::receive(this->peer_socket);

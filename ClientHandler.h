@@ -13,10 +13,13 @@
 
 class ClientHandler : public Thread {
 public:
-    ClientHandler
+    /*ClientHandler
     (Socket socket, ClientCounter &client_counter,
      GameResults &game_results, const int &number);
+     */
 
+    ClientHandler
+    (Socket socket, GameResults &game_results, const int &number);
     ~ClientHandler() override;
 
     void run() override;
@@ -26,7 +29,7 @@ public:
 private:
     GameResults &game_results;
 
-    ClientCounter &client_counter;
+    //ClientCounter &client_counter;
 
     GuessNumberGame game;
 
