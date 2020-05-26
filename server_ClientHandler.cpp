@@ -28,7 +28,6 @@ void ClientHandler::run() {
     if (game.is_won()) game_results.increment_wins();
     else game_results.increment_losses();
     client_counter.remove_client();
-    std::cerr << "Client disconnected!\n";
 }
 Command* ClientHandler::receive_request() {
     return ServerProtocol::receive(this->peer_socket);

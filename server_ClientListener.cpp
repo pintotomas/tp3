@@ -6,7 +6,6 @@ ClientListener::ClientListener(char *port, std::vector<int> &numbers) :
 number_list(numbers) {
     Socket server_socket;
     server_socket.bind_and_listen(port);
-    //client_counter = new ClientCounter();
     this->server_socket = std::move(server_socket);
 }
 
@@ -14,8 +13,6 @@ ClientListener::~ClientListener() {
     for (ClientHandler *c : clients) {
         delete c;
     }
-    //delete client_counter;
-    //delete results;
     join();
 }
 
@@ -31,7 +28,6 @@ void ClientListener::run() {
         catch (std::invalid_argument) {
             break;
         }
-        std::cerr << "New Client!\n";
         ClientHandler *client = new ClientHandler(std::move(clientSkt),
          client_counter, results, number_list.get_next());
         clients.push_back(client);
