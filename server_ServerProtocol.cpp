@@ -2,13 +2,13 @@
 #include <iostream>
 
 void ServerProtocol::send
-(Socket& skt, const unsigned char *message, uint16_t *size) {
+(const Socket& skt, const unsigned char *message, const uint16_t *size) {
     uint16_t size_converted = htons(*size);
     skt.send(reinterpret_cast<const void *>(&size_converted), 2);
     skt.send(reinterpret_cast<const void *>(message), *size);
 }
 
-Command* ServerProtocol::receive(Socket& skt) {
+Command* ServerProtocol::receive(const Socket& skt) {
     unsigned char c = 0;
     Command * command = nullptr;
     skt.recv(reinterpret_cast<void *>(&c), 1);

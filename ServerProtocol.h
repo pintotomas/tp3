@@ -11,9 +11,9 @@
 namespace ServerProtocol {
 
     //Debe ser eliminado por el usuario
-    Command* receive(Socket& skt);
+    Command* receive(const Socket& skt);
     
-	void send(Socket& skt, const unsigned char *message, uint16_t *size);
+	void send(const Socket& skt, const unsigned char *message, const uint16_t *size);
 }
 
 #endif //SERVER_PROTOCOL_H

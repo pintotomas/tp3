@@ -38,7 +38,8 @@ public:
 private:
     int fd = -1;
 
-    struct addrinfo *getAddr(const char *host, const char *service, int flags) const;
+    struct addrinfo *getAddr
+    (const char *host, const char *service, int flags) const;
 };
 
 #endif //SOCKET_H
