@@ -17,17 +17,17 @@ public:
 
     ~Socket();
 
-    explicit Socket(int i);
+    explicit Socket(const int i);
 
-    void bind_and_listen(char *port);
+    void bind_and_listen(const char *port);
 
-    void connect(char *host, char *port);
+    void connect(const char *host, const char *port);
 
     Socket accept();
 
-    void send(const void *msg, size_t length);
+    void send(const void *msg, const size_t length);
 
-    void recv(void *response, size_t length);
+    void recv(void *response, const size_t length);
 
     void close();
 

@@ -6,7 +6,7 @@
 
 Socket::Socket(int i) : fd(i) { }
 
-void Socket::connect(char *host, char *port) {
+void Socket::connect(const char *host, const char *port) {
     bool connected = false;
     struct addrinfo *addrinfo_list;
     addrinfo_list = getAddr(host, port, CLIENT_FLAGS);
@@ -23,7 +23,7 @@ void Socket::connect(char *host, char *port) {
     freeaddrinfo(addrinfo_list);
 }
 
-void Socket::bind_and_listen(char *port) {
+void Socket::bind_and_listen(const char *port) {
     bool binded = false;
     struct addrinfo *addrinfo_list;
     addrinfo_list = getAddr(nullptr, port, SERVER_FLAGS);
@@ -53,7 +53,7 @@ void Socket::close() {
     ::close(this->fd);
 }
 
-void Socket::send(const void *msg, size_t length) {
+void Socket::send(const void *msg, const size_t length) {
     if (length == 0) return;
     uint remaining_bytes = length;
     uint total_bytes_sent = 0;
@@ -67,7 +67,7 @@ void Socket::send(const void *msg, size_t length) {
     } while (total_bytes_sent < length && bytes > 0);
 }
 
-void Socket::recv(void *response, size_t length) {
+void Socket::recv(void *response, const size_t length) {
     if (length == 0) return;
     uint remaining_bytes = length;
     uint total_bytes_received = 0;
