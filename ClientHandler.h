@@ -34,9 +34,7 @@ private:
 
     bool alive = true;
 
-    //std::string receive_request();
     Command* receive_request();
-    //std::string process_request(std::string &request);
 
     void send_response(const unsigned char* response, uint16_t *size);
 };
