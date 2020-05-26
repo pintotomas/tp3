@@ -1,9 +1,9 @@
 #include "GuessNumberGame.h"
 #include <iostream>
 
-GuessNumberGame::GuessNumberGame(uint16_t number) : number(number) {}  
+GuessNumberGame::GuessNumberGame(const uint16_t number) : number(number) {}  
 GuessNumberGame::~GuessNumberGame() {}
-AttemptResult GuessNumberGame::try_to_guess(uint16_t n) {
+const AttemptResult GuessNumberGame::try_to_guess(const uint16_t n) {
 	AttemptResult result = { 0, 0, 0};
 	std::string number_to_guess = std::to_string(number);
 	std::string user_try = std::to_string(n);
@@ -20,7 +20,7 @@ AttemptResult GuessNumberGame::try_to_guess(uint16_t n) {
 	return result;
 }
 
-bool GuessNumberGame::is_won() {
+const bool GuessNumberGame::is_won() {
 	return won;
 }
 
@@ -33,7 +33,7 @@ void GuessNumberGame::decrement_tries() {
 	tries--;
 }
 
-bool GuessNumberGame::finished() {
+const bool GuessNumberGame::finished() {
 	if (tries == 0 || won) return true;
 	return false;
 }
