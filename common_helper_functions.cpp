@@ -17,7 +17,6 @@ const bool is_digits(const std::string &str)
     return std::all_of(str.begin(), str.end(), ::isdigit);
 }
 
-//returns true if str can be represented in uint16
 const bool str_to_uint16(const char *str)
 {
   char *end;

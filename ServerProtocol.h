@@ -10,7 +10,7 @@
 
 namespace ServerProtocol {
 
-    //Debe ser eliminado por el usuario
+    //El comando devuelto debe ser eliminado por el usuario
     Command* receive(const Socket& skt);
     
 	void send

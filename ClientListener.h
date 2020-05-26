@@ -16,17 +16,13 @@ public:
     ~ClientListener() override;
 
     void run() override;
-
-    // Devuelve True si cuando el server se encuentre sin
-    // Atender a mas clientes
-    //const bool server_is_idle();
     void stop_listening();
+    //Muestra los resultados de los juegos
     void print_results();
 
 private:
     CircleListInteger number_list;
     GameResults results;
-    //ClientCounter client_counter;
     Socket server_socket;
     std::list<ClientHandler *> clients;
     void garbage_collector();

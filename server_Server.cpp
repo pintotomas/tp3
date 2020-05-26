@@ -11,6 +11,5 @@ void Server::run() {
         std::cin >> input;
     }
     this->listener.stop_listening();
-    //while (!this->listener.server_is_idle()) {}
     this->listener.print_results();
 }
