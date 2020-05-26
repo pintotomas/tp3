@@ -3,20 +3,16 @@
 
 #include "Socket.h"
 #include "Thread.h"
-#include "ClientCounter.h"
 #include "GameResults.h"
 #include <string>
 #include "Command.h"
 #include "ServerProtocol.h"
 #include "GuessNumberGame.h"
 
-
 class ClientHandler : public Thread {
 public:
     ClientHandler
-    (Socket socket, ClientCounter &client_counter,
-     GameResults &game_results, const int &number);
-
+    (Socket socket, GameResults &game_results, const int &number);
     ~ClientHandler() override;
 
     void run() override;
@@ -25,8 +21,6 @@ public:
 
 private:
     GameResults &game_results;
-
-    ClientCounter &client_counter;
 
     GuessNumberGame game;
 

@@ -10,6 +10,6 @@
 const bool contains_unique_numbers(const std::string &str);
 
 const bool is_digits(const std::string &str);
-//returns true if str can be represented in uint16
+//Devuelve true si se puede transformar str a uint16_t
 const bool str_to_uint16(const char *str);
 #endif //HELPERFUNCTIONS_H

@@ -10,6 +10,8 @@ class NumberCommand: public Command {
     virtual const std::string get_response(GuessNumberGame &game);
   private:
   	const uint16_t number;
+  	//Interpreta el resultado de la jugada del usuario, devuelve un string
+  	//de la forma x bien, x regular o x mal.
 	const std::string parse_game_attempt(const AttemptResult &res) const;
 };
 

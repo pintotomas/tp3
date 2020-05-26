@@ -10,13 +10,13 @@ number_list(numbers) {
 }
 
 ClientListener::~ClientListener() {
-    for (ClientHandler *c : clients) {
-        delete c;
-    }
     join();
 }
 
 void ClientListener::stop_listening() {
+    for (ClientHandler *c : clients) {
+        delete c;
+    }
     server_socket.close();
 }
 void ClientListener::run() {
@@ -29,16 +29,11 @@ void ClientListener::run() {
             break;
         }
         ClientHandler *client = new ClientHandler(std::move(clientSkt),
-         client_counter, results, number_list.get_next());
+        results, number_list.get_next());
         clients.push_back(client);
         client->start();
-        client_counter.add_client();
         garbage_collector();
     }
-}
-
-const bool ClientListener::server_is_idle() {
-    return client_counter.wait_until_no_more_clients();
 }
 
 void ClientListener::print_results() {
