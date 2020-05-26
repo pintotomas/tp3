@@ -6,9 +6,9 @@
 
 namespace ClientProtocol {
 
-    void send(Socket& skt, const unsigned char *message, std::size_t size);
+    void send(const Socket& skt, const unsigned char *message, const std::size_t size);
 
-    unsigned char* receive(Socket& skt);
+    unsigned char* receive(const Socket& skt);
 }
 
 #endif //CLIENT_PROTOCOL_H
