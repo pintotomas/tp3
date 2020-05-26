@@ -1,15 +1,14 @@
 #ifndef GAME_RESULTS
 #define GAME_RESULTS
 
-#include <mutex>
+#include <atomic>
 #include <iostream>
 /* Almacena la cantidad de jugadores que pierden/ganan
 */
 class GameResults {
  private:
-  int win_count;
-  int loss_count;
-  std::mutex mutex;  
+  std::atomic_int win_count;
+  std::atomic_int loss_count;
 
  protected:
  public:
