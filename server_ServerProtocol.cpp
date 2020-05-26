@@ -19,7 +19,6 @@ Command* ServerProtocol::receive(Socket& skt) {
     } else if (c == 'n') {
         uint16_t number;
         skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
-        std::cout << "Received the number: " << ntohs(number) << std::endl;
         command = new NumberCommand(ntohs(number));
     }
     return command;

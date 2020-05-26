@@ -8,7 +8,6 @@ ClientHandler::ClientHandler(Socket socket, ClientCounter &client_counter,
  GameResults &game_results, const int &number) : game_results(game_results), 
  client_counter(client_counter), game(number) {
     this->peer_socket = std::move(socket);
-    std::cout << "This client has to guess the number: " << number <<std::endl;
 }
 
 ClientHandler::~ClientHandler() {
@@ -41,6 +40,5 @@ void ClientHandler::send_response
 }
 
 bool ClientHandler::is_alive() {
-    std::cout << "Returning: " << this->alive << std::endl;
     return this->alive;
 }

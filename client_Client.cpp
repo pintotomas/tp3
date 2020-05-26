@@ -21,7 +21,6 @@ bool Client::valid_request(std::string &request) {
         if (str_to_uint16(request.c_str()))
             return true;
         else {
-            //ESTO DEBERIA HACERLO EL SERVIDOR
             std::cout << invalid_command_error << std::endl;
             return false;
         }
