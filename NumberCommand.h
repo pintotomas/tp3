@@ -10,6 +10,7 @@ class NumberCommand: public Command {
     virtual std::string get_response(GuessNumberGame &game);
   private:
   	uint16_t number;
+	std::string parse_game_attempt(AttemptResult &res);
 };
 
 #endif //NUMBERCOMMAND_H
