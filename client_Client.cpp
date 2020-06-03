@@ -2,7 +2,6 @@
 #include "Client.h"
 #include <cstddef>
 #include "Request.h"
-//#include <memory.h>
 
 Client::Client(const char *host, const char *port) {
     this->socket.connect(host, port);

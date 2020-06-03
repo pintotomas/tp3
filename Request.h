@@ -6,7 +6,7 @@
 #include <memory.h>
 #include <arpa/inet.h>
 #include <string>
-
+#include <memory>
 class Request {
  public:
     explicit Request(const std::string req);
@@ -15,7 +15,7 @@ class Request {
 	const std::size_t get_size() const;
 
  private:
-    unsigned char* request;
+	std::unique_ptr<unsigned char[]> request;
  	std::size_t request_size;
  };
 #endif //REQUEST_H
