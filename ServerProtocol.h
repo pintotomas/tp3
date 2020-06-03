@@ -11,9 +11,9 @@
 namespace ServerProtocol {
 
     //El comando devuelto debe ser eliminado por el usuario
-    Command* receive(const Socket& skt);
+    Command* receive_command(const Socket& skt);
     
-	void send
+	void send_response_to_command
 	(const Socket& skt, const unsigned char *message, const uint16_t *size);
 }
 

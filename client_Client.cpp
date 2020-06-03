@@ -49,9 +49,9 @@ void Client::run() {
 }
 
 void Client::send_request(const unsigned char* request, std::size_t size) {
-    ClientProtocol::send(socket, request, size);
+    ClientProtocol::send_request(socket, request, size);
 }
 
 std::vector<unsigned char> Client::get_response() {
-    return ClientProtocol::receive(socket);
+    return ClientProtocol::receive_request_response(socket);
 }

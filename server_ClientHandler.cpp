@@ -27,12 +27,13 @@ void ClientHandler::run() {
     this->peer_socket.close();
 }
 Command* ClientHandler::receive_request() {
-    return ServerProtocol::receive(this->peer_socket);
+    return ServerProtocol::receive_command(this->peer_socket);
 }
 
 void ClientHandler::send_response
 (const unsigned char* response, const uint16_t* size) {
-    return ServerProtocol::send(this->peer_socket, response, size);
+    return ServerProtocol::send_response_to_command
+           (this->peer_socket, response, size);
 }
 
 const bool ClientHandler::is_alive() {
