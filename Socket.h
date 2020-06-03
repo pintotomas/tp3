@@ -17,8 +17,6 @@ public:
 
     ~Socket();
 
-    explicit Socket(const int i);
-
     void bind_and_listen(const char *port);
 
     void connect(const char *host, const char *port);
