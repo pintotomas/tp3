@@ -5,7 +5,7 @@
 #include <string>
 #include "Socket.h"
 #include "ClientProtocol.h"
-
+#include <vector>
 class Client {
 public:
     Client(const char *host, const char *port);
@@ -19,8 +19,7 @@ private:
 
     void send_request(const unsigned char* request, std::size_t size);
 
-	unsigned char* get_response();
+	std::vector<unsigned char> get_response();
 };
-
 
 #endif //CLIENT_H
