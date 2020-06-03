@@ -4,21 +4,21 @@
 void ServerProtocol::send
 (const Socket& skt, const unsigned char *message, const uint16_t *size) {
     uint16_t size_converted = htons(*size);
-    skt.send(reinterpret_cast<const void *>(&size_converted), 2);
-    skt.send(reinterpret_cast<const void *>(message), *size);
+    skt.send(&size_converted, 2);
+    skt.send(message, *size);
 }
 
 Command* ServerProtocol::receive(const Socket& skt) {
     unsigned char c = 0;
     Command * command = nullptr;
-    skt.recv(reinterpret_cast<void *>(&c), 1);
+    skt.recv(&c, 1);
     if (c == 'h') {
         command = new HelpCommand();
     } else if (c == 's') {
         command = new GiveUpCommand();
     } else if (c == 'n') {
         uint16_t number;
-        skt.recv(reinterpret_cast<uint16_t*>(&number), 2);
+        skt.recv(&number, 2);
         command = new NumberCommand(ntohs(number));
     }
     return command;
