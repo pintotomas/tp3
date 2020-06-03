@@ -24,7 +24,6 @@ Request::Request(const std::string req) {
 Request::~Request() {
 }
 const unsigned char* Request::get_request() const {
-    std::cout << request.get()[0] << std::endl;
     return request.get();
 }
 const std::size_t Request::get_size() const {
