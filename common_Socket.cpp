@@ -4,8 +4,6 @@
 #include "Socket.h"
 #include <iostream>
 
-Socket::Socket(int i) : fd(i) { }
-
 void Socket::connect(const char *host, const char *port) {
     bool connected = false;
     struct addrinfo *addrinfo_list;
@@ -45,7 +43,9 @@ Socket Socket::accept() {
     int fd = ::accept(this->fd, nullptr, nullptr);
     if (fd == -1)
         throw std::invalid_argument("closed socket!");
-    return Socket(fd);
+    Socket skt;
+    skt.fd = fd;
+    return std::move(skt);
 }
 
 void Socket::close() {

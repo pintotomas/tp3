@@ -16,8 +16,17 @@ class GuessNumberGame {
     mal, regulares y bien en el numero que intento adivinar el jugaudor.
     Si hay 3 bien, el juego pasara a estado ganado */
     const AttemptResult try_to_guess(const uint16_t n);
+    /*
+    Decrementa en 1 la cantidad de intentos restantes para adivinar el numero
+    */
     void decrement_tries();
+    /*Establece el juego como perdido independientemente de la cantidad de 
+    intentos restantes
+    */
     void automatic_loss();
+    /* Devuelve true si el juego fue ganado o si no hay mas intentos
+    para adivinar el numero 
+    */
     const bool finished() const;
     const bool is_won() const;
   private:

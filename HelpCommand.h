@@ -6,6 +6,8 @@ class HelpCommand: public Command {
   public:
     HelpCommand();
     ~HelpCommand();
+    //Devuelve el string que tiene la informacion de ayuda del 
+    //juego
     virtual const std::string get_response(GuessNumberGame &game);
 };
 

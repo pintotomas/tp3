@@ -32,7 +32,8 @@ bool valid_file(std::ifstream& stream) {
 	stream.seekg(0, std::ios::beg);
     return true;
 }
-
+//PRE: El archivo contiene el formato valido
+//Devuelve los numeros en el archivo 
 std::vector<int> parse_numbers(std::ifstream& stream) {
     std::vector<int> numbers;
     std::string str; 

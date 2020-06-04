@@ -11,11 +11,17 @@
 
 class ClientListener : public Thread {
 public:
+    /*Crea un nuevo ClientListener que escuchara en el puerto port
+    y utilizara numbers para asignarle a cada cliente que se conecte*/
     ClientListener(const char *port, std::vector<int> &numbers);
 
     ~ClientListener() override;
-
+    /*Escucha nuevos clientes en el puerto 'port'.
+    Por cada nuevo cliente que se conecte al puerto, crea a un nuevo
+    ClientHandler al cual se le asigna un numero del vector numbers
+    utilizando RoundRobin para que juege al juego GuessNumberGame */
     void run() override;
+    //Deja de escuchar por nuevos clientes
     void stop_listening();
     //Muestra los resultados de los juegos
     void print_results();
@@ -25,6 +31,9 @@ private:
     GameResults results;
     Socket server_socket;
     std::list<ClientHandler *> clients;
+    /*Remueve a los clientes del vector clients
+     que hayan muerto o hayan terminado de jugar
+    */
     void garbage_collector();
 };
 

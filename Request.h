@@ -6,16 +6,23 @@
 #include <memory.h>
 #include <arpa/inet.h>
 #include <string>
-
+#include <memory>
 class Request {
  public:
     explicit Request(const std::string req);
     ~Request();
+    /* Devuelve un char seguido de un uint_16t 
+    (si el primer char es una 'n') casteado a unsigned char*
+    */
 	const unsigned char* get_request() const;
+	/*
+	Devuelve la cantidad de bytes del request devuelto
+	por get_request()
+	*/
 	const std::size_t get_size() const;
 
  private:
-    unsigned char* request;
+	std::unique_ptr<unsigned char[]> request;
  	std::size_t request_size;
  };
 #endif //REQUEST_H

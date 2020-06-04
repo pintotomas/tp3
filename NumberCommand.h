@@ -7,6 +7,8 @@ class NumberCommand: public Command {
   public:
     explicit NumberCommand(const uint16_t number);
     ~NumberCommand();
+    //Devuelve la cantidad de numeros que esten bien, regular o mal
+    //Si el usuario adivino el numero, devuelve 'ganaste'
     virtual const std::string get_response(GuessNumberGame &game);
   private:
   	const uint16_t number;

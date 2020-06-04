@@ -2,7 +2,6 @@
 #include "Client.h"
 #include <cstddef>
 #include "Request.h"
-//#include <memory.h>
 
 Client::Client(const char *host, const char *port) {
     this->socket.connect(host, port);
@@ -40,21 +39,19 @@ void Client::run() {
         }
         Request request(input);
         send_request(request.get_request(), request.get_size());
-        unsigned char* response = get_response();
-        std::string response_str(reinterpret_cast<char*>(response));
-        std::cout << response_str <<std::endl;
+        std::vector<unsigned char> response = get_response();
+        std::string response_str{ response.begin(), response.end() - 1};
+        std::cout << response_str << std::endl;
         if ((response_str.compare("Perdiste") == 0) ||
-         (response_str.compare("Ganaste") == 0)) {
-            keep_playing = false;
-        }
-        delete[] response;
+            (response_str.compare("Ganaste") == 0))
+                 keep_playing = false;
     }
 }
 
 void Client::send_request(const unsigned char* request, std::size_t size) {
-    ClientProtocol::send(socket, request, size);
+    ClientProtocol::send_request(socket, request, size);
 }
 
-unsigned char* Client::get_response() {
-    return ClientProtocol::receive(socket);
+std::vector<unsigned char> Client::get_response() {
+    return ClientProtocol::receive_request_response(socket);
 }
