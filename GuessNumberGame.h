@@ -29,6 +29,7 @@ class GuessNumberGame {
     */
     const bool finished() const;
     const bool is_won() const;
+    
   private:
     unsigned int tries = 10;
     bool won = false;
