@@ -2,7 +2,7 @@
 #define NUMBERCOMMAND_H
 #include "Command.h"
 #include <string>
-#include "helper_functions.h"
+#include "../helpers/helper_functions.h"
 class NumberCommand: public Command {
   public:
     explicit NumberCommand(const uint16_t number);

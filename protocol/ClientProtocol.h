@@ -2,7 +2,7 @@
 #define CLIENT_PROTOCOL_H
 
 #include <string>
-#include "Socket.h"
+#include "../red/Socket.h"
 #include <vector>
 namespace ClientProtocol {
 

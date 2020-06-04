@@ -1,13 +1,13 @@
 #ifndef CLIENTHANDLER_H
 #define CLIENTHANDLER_H
 
-#include "Socket.h"
-#include "Thread.h"
-#include "GameResults.h"
+#include "../red/Socket.h"
+#include "../utils/Thread.h"
+#include "../game/GameResults.h"
 #include <string>
-#include "Command.h"
-#include "ServerProtocol.h"
-#include "GuessNumberGame.h"
+#include "../commands/Command.h"
+#include "../protocol/ServerProtocol.h"
+#include "../game/GuessNumberGame.h"
 
 class ClientHandler : public Thread {
 public:

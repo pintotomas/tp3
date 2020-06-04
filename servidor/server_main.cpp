@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include "helper_functions.h"
+#include "../helpers/helper_functions.h"
 
 #define NUMBERS_LENGTH 3
 #define ARGC 3

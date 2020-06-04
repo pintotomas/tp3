@@ -1,10 +1,10 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "helper_functions.h"
+#include "../helpers/helper_functions.h"
 #include <string>
-#include "Socket.h"
-#include "ClientProtocol.h"
+#include "../red/Socket.h"
+#include "../protocol/ClientProtocol.h"
 #include <vector>
 class Client {
 public:
