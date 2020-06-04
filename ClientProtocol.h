@@ -2,7 +2,7 @@
 #define CLIENT_PROTOCOL_H
 
 #include <string>
-#include "../red/Socket.h"
+#include "Socket.h"
 #include <vector>
 namespace ClientProtocol {
 	//Envia el mensaje a traves del socket al servidor con el cual

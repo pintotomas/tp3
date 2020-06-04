@@ -2,11 +2,11 @@
 #define SERVER_PROTOCOL_H
 
 #include <string>
-#include "../red/Socket.h"
-#include "../commands/Command.h"
-#include "../commands/HelpCommand.h"
-#include "../commands/GiveUpCommand.h"
-#include "../commands/NumberCommand.h"
+#include "Socket.h"
+#include "Command.h"
+#include "HelpCommand.h"
+#include "GiveUpCommand.h"
+#include "NumberCommand.h"
 
 namespace ServerProtocol {
 	/*Recibe un request del cliente y lo interpreta creando un Comando

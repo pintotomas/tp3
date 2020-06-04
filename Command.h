@@ -1,7 +1,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 #include <string>
-#include "../game/GuessNumberGame.h"
+#include "GuessNumberGame.h"
 class Command {
  public:
     Command();

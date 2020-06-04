@@ -32,7 +32,7 @@ Aclaro que en este ultimo diagrama omiti algunas cosas de mas bajo nivel de Sock
 
 - Se crea un string en una unica llamada para el comando de ayuda
 
-- Se organizo el codigo en carpetas para mayor claridad. No pude organizarlo en subcarpetas por una limitacion del makefile provisto
+- Se documento el codigo para mayor claridad.
 
 - El socket no recibe un fd por parametro para no romper el encapsulamiento
 

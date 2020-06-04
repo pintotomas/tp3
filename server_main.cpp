@@ -1,8 +1,8 @@
-#include "servidor/server_Server.h"
+#include "server_Server.h"
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include "helpers/helper_functions.h"
+#include "helper_functions.h"
 
 #define NUMBERS_LENGTH 3
 #define ARGC 3

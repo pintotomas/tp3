@@ -1,12 +1,12 @@
 #ifndef CLIENTLISTENER_H
 #define CLIENTLISTENER_H
 
-#include "../red/Socket.h"
-#include "../utils/Thread.h"
+#include "Socket.h"
+#include "Thread.h"
 #include "ClientHandler.h"
 #include <list>
-#include "../game/GameResults.h"
-#include "../utils/CircleListInteger.h"
+#include "GameResults.h"
+#include "CircleListInteger.h"
 #include <vector>
 
 class ClientListener : public Thread {
