@@ -1,7 +1,6 @@
 #include "Request.h"
 #include <iostream>
 Request::Request(const std::string req) {
-
 	request_size = 1;
     if (is_digits(req)) {
     	request_size = 3;
