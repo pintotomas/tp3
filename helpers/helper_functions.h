@@ -6,7 +6,8 @@
 #include <string>
 #include <algorithm>
 #include <inttypes.h>
-//PRE: str is a string of numbers
+//PRE: str es un string de numeros
+//Devuelve True si solo hay numeros unicos
 const bool contains_unique_numbers(const std::string &str);
 
 const bool is_digits(const std::string &str);

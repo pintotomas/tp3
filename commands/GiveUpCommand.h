@@ -6,6 +6,9 @@ class GiveUpCommand: public Command {
   public:
     GiveUpCommand();
     ~GiveUpCommand();
+    /*
+    Devuelve el string 'Perdiste' y settea el juego como perdido.
+    */
     virtual const std::string get_response(GuessNumberGame &game);
 };
 
