@@ -23,3 +23,17 @@ Aclaro que en este ultimo diagrama omiti algunas cosas de mas bajo nivel de Sock
 - Utilize un namespace para el protocol en vez de una clase ya que no poseia atributos y ademas me parecio mas un agrupamiento de funciones relacionadas que un objeto.
 
 - La respuesta del servidor se podria almacenar en un objeto Response para que cuando se llame a su destructor se elimine la memoria dinamica asignada asi aprovechando RAII, no llegue a hacerlo.
+
+## Correcciones
+
+- Se removieron casteos innecesarios al enviar unsigned char* a traves de los sockets
+
+- Se utilizan nombres mas representativos para los metodos de los protocolos
+
+- Se crea un string en una unica llamada para el comando de ayuda
+
+- Se organizo el codigo en carpetas para mayor claridad. No pude organizarlo en subcarpetas por una limitacion del makefile provisto
+
+- El socket no recibe un fd por parametro para no romper el encapsulamiento
+
+- Se utilizo smart pointers para hacer al programa mas RAII, se utilizaron unique_ptr (request del cliente) y vector de strings (response del server) para lograr esto. 
