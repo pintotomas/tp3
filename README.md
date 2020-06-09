@@ -8,6 +8,9 @@ Repositorio: https://github.com/pintotomas/tp3
 
 Aplicacion multi-cliente servidor donde los clientes tienen 10 intentos para adivinar un numero que es asignado al cliente una vez que este se conecta al servidor. Para el soporte de multiples clientes, se tiene la clase ClientListener del lado del servidor la cual una vez detecta que se conecto un nuevo cliente le asigna un numero y corre el juego en un nuevo thread (clase ClientHandler). Cada uno de los clientes se comunica con un unico ClientHandler respetando el protocolo especificado en el enunciado mediante sockets. Una vez que se cierra el servidor, se espera a todos los clientes que se encontraban jugando a que terminen su partida y luego se procede a liberar todos los recursos. 
 
+En cuanto a la nomenclatura de archivos se uso el prefijo client_ o server_ para los archivos que correspondan a cliente/servidor. Para los headers no se utiliza este prefijo. 
+Los archivos que contengan nombres en mayusculas son clases/namespaces, mientras que los que no, son funciones sueltas como por ejemplo en helper_functions.
+
 ## Diagramas
 
 ![Diagrama de clases](diagramas/diagrama_de_clases.png)
