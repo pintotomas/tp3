@@ -10,9 +10,9 @@
 class Request {
  public:
     /*Crea un nuevo request a partir del input del usuario
-    si es un numero, se reservaran 3 bytes para un unsigned char*.
-    Si no, solo un byte para el comando ayuda/rendirse.
-    Sera liberado por esta clase*/
+    si es un numero, se reservaran 3 bytes para un unsigned 
+    char*. Si no, solo un byte para el comando ayuda/
+    rendirse. Sera liberado por esta clase*/
     explicit Request(const std::string req);
     ~Request();
     /* Devuelve un char seguido de un uint_16t 
